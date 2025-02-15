@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import Button from "../components/ui/Button";
 
 export default function Home() {
   return (
@@ -16,9 +17,12 @@ export default function Home() {
       </p>
 
       <Link to="/create-trip">
-        <button className="cursor-pointer rounded-lg bg-[#ff6b6b] px-6 py-3 text-lg font-semibold text-white transition-colors hover:bg-[#ff8989]">
-          Get started, it's free!!
-        </button>
+        <Button
+          size="lg"
+          className=" p-2 bg-[#f56551] font-semibold text-white lg:text-xl hover:bg-[#f78a7b]"
+        >
+          <Button.Text>Get started</Button.Text>
+        </Button>
       </Link>
     </section>
   );
