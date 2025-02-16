@@ -1,6 +1,6 @@
 interface OptionCardProps {
   selected: boolean;
-  onClick: () => void;
+  onSelect: (value: boolean) => void;
   emoji: string;
   title: string;
   description: string;
@@ -11,15 +11,20 @@ export function OptionCard({
   emoji,
   title,
   description,
-  onClick,
+  onSelect,
 }: OptionCardProps) {
+
+  function handleClick() {
+    onSelect(!selected)
+  }
+
   return (
     <button
-      onClick={onClick}
-      className={`rounded-lg border p-6 cursor-pointer ${
+      onClick={handleClick}
+      className={`rounded-lg border p-5 cursor-pointer ${
         selected
-          ? "border-blue-600 bg-gray-500 text-white"
-          : "border-gray-300 hover:border-blue-500"
+          ? "border-gray-600 bg-gray-500 text-white"
+          : "border-gray-300 hover:bg-gray-200"
       } transition-all duration-200`}
     >
       <div className="flex flex-col items-center gap-2">
