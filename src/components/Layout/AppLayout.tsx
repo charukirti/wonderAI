@@ -4,7 +4,7 @@ import Footer from "./Footer";
 
 export default function AppLayout() {
   return (
-    <div className="mx-3 min-h-screen lg:mx-10">
+    <div className="mx-3 flex min-h-screen flex-col lg:mx-10">
       <Header />
       <main>
         <Outlet />

@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 export default function Header() {
   return (
-    <header className="flex items-center justify-between p-2">
+    <header className="flex items-center justify-between p-2 sticky top-2">
       <div className="flex items-center gap-2">
         <img src="logo.svg" alt="" className="sm:h-8"/>
         <Link to="/">
