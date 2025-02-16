@@ -38,3 +38,26 @@ export const budgetOptions = [
     description: "High-end hotels, exclusive experiences",
   },
 ];
+
+export const activityOptions = [
+  {
+    emoji: "🏖️",
+    title: "Relaxation",
+    description: "Beaches, spas, and peaceful activities",
+  },
+  {
+    emoji: "🏃",
+    title: "Adventure",
+    description: "Hiking, sports, and outdoor thrills",
+  },
+  {
+    emoji: "🏛️",
+    title: "Culture",
+    description: "Museums, landmarks, and local history",
+  },
+  {
+    emoji: "🍷",
+    title: "Food & Nightlife",
+    description: "Restaurants, bars, and entertainment",
+  },
+];
