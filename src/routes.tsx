@@ -22,12 +22,12 @@ const routes: RouteObject[] = [
       },
 
       {
-        path: "trip-deatils/:id",
+        path: "/trip-deatils/:id",
         element: <TripDetails />,
       },
 
       {
-        path: "my-trips",
+        path: "/my-trips",
         element: <MyTrips />,
       },
 
