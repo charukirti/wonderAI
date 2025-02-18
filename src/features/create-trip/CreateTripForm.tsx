@@ -6,13 +6,17 @@ import { NavigationButtons } from "../../components/ui/NavigationButtonComponent
 import DestinationStep from "./form-steps/DestinationStep";
 import BudgetDuration from "./form-steps/BudgetDuration";
 import { GroupAndActivities } from "./form-steps/GroupAndActivities";
+import { PROMPT } from "../../utils/constants";
+
+import { useCreateTrip } from "../../hooks/useCreateTrip";
 
 export default function CreateTripForm() {
   const [currentStep, setCurrentStep] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const { generateTrip, isCreating } = useCreateTrip();
   const [formData, setFormData] = useState<FormData>({
     destination: "",
-    duration: "eg. 2 days",
+    duration: 0,
     budget: "",
     withWhom: "",
     activity: "",
@@ -22,7 +26,7 @@ export default function CreateTripForm() {
 
   function handleNext() {
     const isValid = ValidationSchema.isStepValid(currentStep, formData);
-    
+
     if (isValid) {
       setCurrentStep((prev) => Math.min(prev + 1, totalSteps - 1));
       setError(null);
@@ -38,10 +42,19 @@ export default function CreateTripForm() {
 
   function handleSubmit() {
     const isValid = ValidationSchema.isStepValid(currentStep, formData);
-    
+
     if (isValid) {
       console.log("Final form data", formData);
-      // Add your submission logic here
+
+      const finalPrompt = PROMPT.replace("{location}", formData?.destination)
+        .replace("{noOfDays}", formData?.duration.toString())
+        .replace("{People}", formData?.withWhom)
+        .replace("{Budget}", formData?.budget)
+        .replace("{activity}", formData?.activity);
+
+      console.log("final prompt:--", finalPrompt);
+
+      generateTrip({ formData, finalPrompt }); // coming from useCreateTrip 
     } else {
       setError(ValidationSchema.getStepError(currentStep, formData));
     }
@@ -52,9 +65,9 @@ export default function CreateTripForm() {
       <h2 className="text-xl font-bold md:text-2xl lg:text-3xl">
         Tell us about your travel preference 🌴🏖️
       </h2>
-      
+
       {error && (
-        <div className="mt-4 p-3 bg-red-50 text-red-500 rounded-md">
+        <div className="mt-4 rounded-md bg-red-50 p-3 text-red-500">
           {error}
         </div>
       )}
@@ -68,6 +81,7 @@ export default function CreateTripForm() {
           onPrevious={handlePrevious}
           onNext={handleNext}
           onSubmit={handleSubmit}
+          isSubmitting={isCreating}
         />
       </div>
 
