@@ -1,4 +1,4 @@
-import { FormData } from "./type";
+import { FormData } from "../features/create-trip/type";
 
 const ValidationSchema = {
   isStepValid: (step: number, data: FormData): boolean => {
@@ -8,7 +8,7 @@ const ValidationSchema = {
 
       case 1:
         return (
-          data.duration !== "eg. 2 days" &&
+          data.duration !== 0 &&
           Number(data.duration) > 0 &&
           data.budget.length > 0
         );
@@ -29,7 +29,7 @@ const ValidationSchema = {
         return "Please select a valid destination";
 
       case 1:
-        if (data.duration === "eg. 2 days" || Number(data.duration) <= 0)
+        if (data.duration === 0 || Number(data.duration) <= 0)
           return "Please enter valid duration";
         if (!data.budget) return "Please select your budget range";
         return "Please complete all fields";

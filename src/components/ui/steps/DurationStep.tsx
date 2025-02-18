@@ -13,11 +13,11 @@ export default function DurationStep({
   durationChange,
 }: DurationStep) {
   function handleDurationChange(e: ChangeEvent<HTMLInputElement>) {
-    const value = Math.max( Number(e.target.value));
+    const value = Math.max(Number(e.target.value));
     durationChange(value);
   }
   return (
-    <div className="flex flex-col gap-2 ">
+    <div className="flex flex-col gap-2">
       <FormLabel>{FormLabels.duration.label} </FormLabel>
       <FormInput
         type="number"

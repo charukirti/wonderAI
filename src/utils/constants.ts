@@ -22,7 +22,7 @@ export const groupOptions = [
 ];
 
 export const budgetOptions = [
-  { 
+  {
     emoji: "💵",
     title: "Cheap",
     description: "Budget-friendly options, hostels, local food",

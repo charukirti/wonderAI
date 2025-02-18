@@ -2,8 +2,8 @@ import { FormData } from "../type";
 import BudgetStep from "../../../components/ui/steps/BudgetStep";
 import DurationStep from "../../../components/ui/steps/DurationStep";
 interface BudgetDurationProps {
-  durationValue: FormData['duration'];
-  durationChange: (value: FormData['duration']) => void;
+  durationValue: FormData["duration"];
+  durationChange: (value: FormData["duration"]) => void;
   budgetValue: FormData["budget"];
   onSelection: (value: FormData["budget"]) => void;
 }

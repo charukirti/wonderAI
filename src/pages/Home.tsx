@@ -19,7 +19,7 @@ export default function Home() {
       <Link to="/create-trip">
         <Button
           size="lg"
-          className=" p-2 bg-[#f56551] font-semibold text-white lg:text-xl hover:bg-[#f78a7b]"
+          className="bg-[#f56551] p-2 font-semibold text-white hover:bg-[#f78a7b] lg:text-xl"
         >
           <Button.Text>Get started</Button.Text>
         </Button>

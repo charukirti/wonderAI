@@ -54,7 +54,7 @@ export default function CreateTripForm() {
 
       console.log("final prompt:--", finalPrompt);
 
-      generateTrip({ formData, finalPrompt }); // coming from useCreateTrip 
+      generateTrip({ formData, finalPrompt }); // coming from useCreateTrip
     } else {
       setError(ValidationSchema.getStepError(currentStep, formData));
     }
