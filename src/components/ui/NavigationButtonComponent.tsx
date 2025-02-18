@@ -6,6 +6,7 @@ interface NavigationButtonsProps {
   onPrevious: () => void;
   onNext: () => void;
   onSubmit: () => void;
+  isSubmitting: boolean;
 }
 
 export function NavigationButtons({
@@ -14,15 +15,13 @@ export function NavigationButtons({
   onPrevious,
   onNext,
   onSubmit,
+  isSubmitting,
 }: NavigationButtonsProps) {
   const isFirstStep = currentStep === 0;
   const isLastStep = currentStep === totalSteps - 1;
 
   return (
     <div className="flex items-center justify-end gap-4">
-
-      
-
       <Button
         onClick={onPrevious}
         disabled={isFirstStep}
@@ -35,7 +34,13 @@ export function NavigationButtons({
         className="bg-blue-500 p-2 text-white hover:bg-blue-600"
         onClick={isLastStep ? onSubmit : onNext}
       >
-        <Button.Text>{isLastStep ? "Generate Trip" : "Next"}</Button.Text>
+        <Button.Text>
+          {isLastStep
+            ? isSubmitting
+              ? "Generating.."
+              : "Generate trip"
+            : "Next"}
+        </Button.Text>
       </Button>
     </div>
   );
