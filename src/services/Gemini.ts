@@ -13,7 +13,7 @@ export async function genrateAIresponse(prompt: string): Promise<string>{
         const text =  response.text();
         return text
     } catch (error) {
-        console.log(error)
+        
         throw new Error('Failed to generate AI response')
     }
 }

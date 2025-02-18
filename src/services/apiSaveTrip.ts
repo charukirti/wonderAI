@@ -16,7 +16,7 @@ export async function saveTripData(formData: FormData, generatedTrip: string) {
     .select("*")
     .single();
   if (error) toast.error("unable to add data into supabase");
-  console.log(data);
+ 
 
   return data;
 }
