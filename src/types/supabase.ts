@@ -11,34 +11,34 @@ export type Database = {
     Tables: {
       trips: {
         Row: {
-          budget: string
+          budget: string | null
           created_at: string | null
-          destination: string
+          destination: string | null
           generated_itinerary: Json | null
           id: string
-          number_of_days: number
+          number_of_days: number | null
           preferred_activities: string | null
-          travel_with: string
+          travel_with: string | null
         }
         Insert: {
-          budget: string
+          budget?: string | null
           created_at?: string | null
-          destination: string
+          destination?: string | null
           generated_itinerary?: Json | null
           id?: string
-          number_of_days: number
+          number_of_days?: number | null
           preferred_activities?: string | null
-          travel_with: string
+          travel_with?: string | null
         }
         Update: {
-          budget?: string
+          budget?: string | null
           created_at?: string | null
-          destination?: string
+          destination?: string | null
           generated_itinerary?: Json | null
           id?: string
-          number_of_days?: number
+          number_of_days?: number | null
           preferred_activities?: string | null
-          travel_with?: string
+          travel_with?: string | null
         }
         Relationships: []
       }

@@ -24,19 +24,22 @@ export const groupOptions = [
 export const budgetOptions = [
   {
     emoji: "💵",
-    title: "Cheap",
-    description: "Budget-friendly options, hostels, local food",
+    title: "Budget Friendly", 
+    description: "Affordable accommodation and activities",
+    value: "budget"
   },
   {
     emoji: "💰",
-    title: "Moderate",
-    description: "Mid-range hotels, mix of restaurants",
+    title: "Mid-Range",
+    description: "Balanced comfort and value",
+    value: "mid-range"
   },
   {
     emoji: "💎",
     title: "Luxury",
-    description: "High-end hotels, exclusive experiences",
-  },
+    description: "Premium stays and experiences",
+    value: "luxury"
+  }
 ];
 
 export const activityOptions = [
@@ -76,14 +79,14 @@ export const PROMPT = `Create an optimal trip itinerary based on the specified l
    - Address  
    - Rating  
    - Price  
-   - Location (Google Maps link or coordinates)  
-   - Image URL  
+   - Location (OpenStreetMap link or coordinates)  
+   - Image URL (from Unsplash, Pexels, Pixabay, or Wikimedia Commons)  
 
 2. **Itinerary for {noOfDays} days:**  
    - Suggested places to visit  
    - Name, details, pricing, timings  
-   - Images (URLs)  
-   - Location (coordinates or Google Maps link)  
+   - Images (from Unsplash, Pexels, Pixabay, or Wikimedia Commons)  
+   - Location (OpenStreetMap link or coordinates)  
    - Ensure all activities and accommodations fit within the budget.  
 
 ### **Output Format:**  
@@ -98,7 +101,7 @@ Return the response strictly in **JSON format** with structured keys:
       "rating": 4.5,
       "price": 100,
       "location": {
-        "map_url": "Google Maps Link",
+        "osm_url": "OpenStreetMap Link",
         "coordinates": { "lat": 0.0, "lng": 0.0 }
       },
       "image_url": "https://example.com/hotel.jpg"
@@ -112,10 +115,11 @@ Return the response strictly in **JSON format** with structured keys:
         "price": 20,
         "timings": "9 AM - 5 PM",
         "image_url": "https://example.com/place.jpg",
-        "location": { "map_url": "Google Maps Link", "coordinates": { "lat": 0.0, "lng": 0.0 } }
+        "location": { "osm_url": "OpenStreetMap Link", "coordinates": { "lat": 0.0, "lng": 0.0 } }
       }
     ]
   }
 }
 \`\`\`
 `;
+

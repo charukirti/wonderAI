@@ -1,10 +1,10 @@
 import { Link } from "react-router";
-
+import logo from '../../assets/logo.svg'
 export default function Header() {
   return (
-    <header className="flex items-center justify-between p-2 sticky top-2">
+    <header className="flex items-center justify-between p-2 sticky top-0 z-50 bg-gray-800 ">
       <div className="flex items-center gap-2">
-        <img src="logo.svg" alt="" className="sm:h-8"/>
+        <img src={logo} alt="" className="sm:h-8"/>
         <Link to="/">
           <h1 className="text-xl lg:text-3xl font-bold">WonderAI</h1>
         </Link>
