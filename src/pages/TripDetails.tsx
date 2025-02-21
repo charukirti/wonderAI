@@ -26,7 +26,7 @@ export default function TripDetails() {
   } = tripDetail;
 
   return (
-    <section className="mx-auto mt-5  p-4">
+    <section className="mx-auto mt-5 p-4">
       <TripOverview
         destination={destination}
         budget={budget}

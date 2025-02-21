@@ -24,7 +24,7 @@ interface Itinerary {
 }
 
 export default function ItinerarySection({ generated_itinerary }: TripProps) {
-  const { itinerary } = useGetTripData( generated_itinerary );
+  const { itinerary } = useGetTripData(generated_itinerary);
 
   console.log(itinerary);
   return (
