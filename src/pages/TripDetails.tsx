@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import { useGetTrip } from "../hooks/useGetTrip";
 import TripOverview from "../features/trip-details/TripOverview";
 import HotelsSection from "../features/trip-details/HotelsSection";
+import ItinerarySection from "../features/trip-details/ItinerarySection";
 
 export default function TripDetails() {
   const { id } = useParams();
@@ -9,7 +10,7 @@ export default function TripDetails() {
 
   if (!id) throw new Error("Id not found");
 
-  const { tripDetail, isLoading, isError } = useGetTrip(id);
+  const { tripDetail, isLoading } = useGetTrip(id);
 
   if (isLoading) return <p>Loading</p>;
 
@@ -36,6 +37,7 @@ export default function TripDetails() {
       />
 
       <HotelsSection generated_itinerary={generated_itinerary} />
+      <ItinerarySection generated_itinerary={generated_itinerary} />
     </section>
   );
 }
