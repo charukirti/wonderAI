@@ -5,16 +5,12 @@ import {
   useContext,
 } from "react";
 
-//1. Creating context for sharing button state
-
 type ButtonContextType = {
   size: "sm" | "md" | "lg";
   disabled: boolean;
 };
 
 const ButtonContext = createContext<ButtonContextType | undefined>(undefined);
-
-// button root props
 
 type ButtonProps = {
   children: ReactNode;
@@ -23,8 +19,6 @@ type ButtonProps = {
   className?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-//2. main button component
-
 function ButtonRoot({
   children,
   size = "md",
@@ -32,7 +26,14 @@ function ButtonRoot({
   className = "",
   ...props
 }: ButtonProps) {
-  const baseStyles = "inline-flex rounded-md transition-colors cursor-pointer";
+  // Add size-specific padding to base styles
+  const sizeStyles = {
+    sm: "py-1.5 px-3",
+    md: "py-2 px-4",
+    lg: "py-2.5 px-5"
+  };
+
+  const baseStyles = `inline-flex items-center justify-center w-full rounded-md transition-colors cursor-pointer ${sizeStyles[size]}`;
 
   return (
     <ButtonContext.Provider value={{ size, disabled }}>
@@ -58,13 +59,13 @@ function Icon({ children, className }: IconProps) {
   if (!context) throw new Error("Icon must be within button");
 
   const sizes = {
-    sm: "w-4 h-5",
+    sm: "w-4 h-4",
     md: "w-5 h-5",
-    lg: "w-6 h-6",
+    lg: "w-8 h-8",
   };
 
   return (
-    <span className={`${sizes[context.size]} ${className}`}>{children}</span>
+    <span className={`${sizes[context.size]} ${className} mr-2 flex items-center`}>{children}</span>
   );
 }
 
@@ -78,9 +79,9 @@ function Text({ children, className }: TextProps) {
   if (!context) throw new Error("Button.Text must be used within Button");
 
   const sizes = {
-    sm: "text-sm px-1",
-    md: "text-base px-2",
-    lg: "text-lg px-3",
+    sm: "text-sm",
+    md: "text-base",
+    lg: "text-lg",
   };
 
   return (
