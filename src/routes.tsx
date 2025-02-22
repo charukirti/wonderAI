@@ -5,6 +5,8 @@ import CreateTrip from "./pages/CreateTrip";
 import TripDetails from "./pages/TripDetails";
 import MyTrips from "./pages/MyTrips";
 import PageNotFound from "./pages/PageNotFound";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const routes: RouteObject[] = [
   {
@@ -29,6 +31,16 @@ const routes: RouteObject[] = [
       {
         path: "/my-trips",
         element: <MyTrips />,
+      },
+
+      {
+        path: "/auth/login",
+        element: <Login />,
+      },
+
+      {
+        path: "/auth/register",
+        element: <Register />,
       },
 
       {
