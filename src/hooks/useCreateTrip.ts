@@ -19,7 +19,7 @@ export function useCreateTrip() {
     onSuccess: (data) => {
       toast.success("Your trip has been created successfully");
       queryClient.invalidateQueries({ queryKey: ["trips"] });
-      navigate(`/trip-deatils/${data.saveData?.id}`);
+      navigate(`/trip-details/${data.saveData?.id}`);
     },
     onError: () => {
       toast.error("Failed to crete trip");

@@ -33,7 +33,9 @@ export default function ItinerarySection({ generated_itinerary }: TripProps) {
       {Object.entries(itinerary as unknown as Itinerary).map(
         ([day, activities]) => (
           <div key={day}>
-            <h3 className="text-xl font-semibold">{day.replace("_", "-")}</h3>
+            <h3 className="text-xl font-semibold">
+              {day.replace("_", "-").toUpperCase()}
+            </h3>
             {activities.map((activity, index) => (
               <ItineraryCard
                 key={`${day}-activity-${index}`}

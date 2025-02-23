@@ -33,7 +33,7 @@ function ButtonRoot({
     lg: "py-2.5 px-5"
   };
 
-  const baseStyles = `inline-flex items-center justify-center w-full rounded-md transition-colors cursor-pointer ${sizeStyles[size]}`;
+  const baseStyles = `inline-flex items-center justify-center  rounded-md transition-colors cursor-pointer ${sizeStyles[size]}`;
 
   return (
     <ButtonContext.Provider value={{ size, disabled }}>

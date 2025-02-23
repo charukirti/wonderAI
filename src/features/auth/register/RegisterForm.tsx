@@ -4,22 +4,28 @@ import { Link } from "react-router";
 import Button from "../../../components/ui/Button";
 import { FcGoogle } from "react-icons/fc";
 import FormRow from "../../../components/ui/FormRow";
-
+import { useRegister } from "./useRegister";
 
 export default function RegisterForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<RegisterFormData>();
-    
-    
-    function onSubmit(data: RegisterFormData) {
-        const { email, password, name } = data
-        
-        
-        console.log('register', data)
-    }
+
+  const { signup, isLoading } = useRegister();
+
+  function onSubmit(data: RegisterFormData) {
+    const { name, email, password } = data;
+    signup(
+      { name, email, password },
+      {
+        onSettled: () => reset(),
+      },
+    );
+    console.log("register", data);
+  }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <h1 className="mb-2 text-center text-2xl font-bold text-white">
@@ -69,7 +75,11 @@ export default function RegisterForm() {
       </p>
 
       <div className="mt-3 flex flex-col gap-2">
-        <Button size="lg" className="bg-[#ff6b6b] p-2 font-bold">
+        <Button
+          size="lg"
+          className="bg-[#ff6b6b] p-2 font-bold"
+          disabled={isLoading}
+        >
           <Button.Text>Register</Button.Text>
         </Button>
         <span className="text-center text-base font-semibold">Or</span>

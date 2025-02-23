@@ -31,14 +31,15 @@ export function NavigationButtons({
       </Button>
 
       <Button
-        className="bg-blue-500 p-2 text-white hover:bg-blue-600"
+        size="lg"
+        className="bg-blue-500  text-white hover:bg-blue-600"
         onClick={isLastStep ? onSubmit : onNext}
       >
         <Button.Text>
           {isLastStep
             ? isSubmitting
               ? "Generating.."
-              : "Generate trip"
+              : "Generate"
             : "Next"}
         </Button.Text>
       </Button>

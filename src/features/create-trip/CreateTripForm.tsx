@@ -61,7 +61,7 @@ export default function CreateTripForm() {
   }
 
   return (
-    <section className="mx-auto mt-5 w-80 md:w-[30rem] lg:w-[60rem]">
+    <section className="mx-auto mt-5 w-80 md:w-[30rem] lg:w-[65rem]">
       <h2 className="text-xl font-bold md:text-2xl lg:text-3xl">
         Tell us about your travel preference 🌴🏖️
       </h2>
