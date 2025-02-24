@@ -1,14 +1,54 @@
 import { useUser } from "../../features/auth/useUser";
 
-export default function Avatar() {
+interface AvatarProps {
+  size?: string;
+  className?: string;
+}
+
+export default function Avatar({ size = "4rem", className = "" }: AvatarProps) {
   const { user } = useUser();
-  const { name, avatar } = user?.user_metadata;
+  const { name, avatar } = user?.user_metadata || {};
+
+  // if there is no avatar show initials
+  if (!avatar) {
+    const initials =
+      name?.[0].toUpperCase() || user?.email?.[0]?.toUpperCase() || "?";
+
+    return (
+      <div
+        className={`flex items-center justify-center rounded-xl bg-blue-500 font-semibold text-white ${className}`}
+        style={{ width: size, height: size }}
+      >
+        {initials}
+      </div>
+    );
+  }
+
   return (
     <>
       <img
         src={avatar}
-        alt={`Avatar of ${name}`}
-        className="block w-[4rem] rounded-xl object-cover object-center outline-2"
+        alt={`Avatar of ${name || "user"}`}
+        style={{ width: size, height: size }}
+        className={`block rounded-xl object-cover object-center ${className}`}
+        onError={(e) => {
+          // Handle image loading failures
+          const target = e.target as HTMLImageElement;
+          target.style.display = "none";
+          const initials =
+            name?.[0]?.toUpperCase() || user?.email?.[0]?.toUpperCase() || "?";
+          const parent = target.parentElement;
+          if (parent) {
+            parent.innerHTML = `
+            <div 
+              style="width: ${size}; height: ${size}"
+              class="flex items-center justify-center bg-blue-500 text-white rounded-xl font-semibold ${className}"
+            >
+              ${initials}
+            </div>
+          `;
+          }
+        }}
       />
     </>
   );

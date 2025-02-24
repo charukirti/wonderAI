@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router";
 import logo from "../../assets/logo.svg";
 import { useUser } from "../../features/auth/useUser";
 import HeaderMenu from "../ui/HeaderMenu";
-import Avatar from "../ui/Avatar";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -13,7 +12,7 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between bg-gray-800 p-2 mt-2">
+    <header className="sticky top-0 z-50 mt-2 flex items-center justify-between bg-gray-800 p-2">
       <div className="flex items-center gap-2">
         <img src={logo} alt="" className="sm:h-8" />
         <Link to="/">
