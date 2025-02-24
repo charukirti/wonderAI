@@ -5,6 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 import FormRow from "../../../components/ui/FormRow";
 import { useLogin } from "./useLogin";
+import useGoogleLogin from "../useGoogleLogin";
 
 export default function LoginForm() {
   const {
@@ -13,6 +14,8 @@ export default function LoginForm() {
     formState: { errors },
     reset,
   } = useForm<LoginFormData>();
+
+  const { mutate: loginWithGoogle, isPending } = useGoogleLogin();
 
   const { signin, isLoading } = useLogin();
 
@@ -63,11 +66,17 @@ export default function LoginForm() {
           <Button.Text>Log in</Button.Text>
         </Button>
         <span className="text-center text-base font-semibold">Or</span>
-        <Button size="lg" className="bg-gray-100 p-2 font-bold text-gray-800">
+        <Button
+          size="lg"
+          className="bg-gray-100 p-2 font-bold text-gray-800"
+          onClick={() => loginWithGoogle()}
+        >
           <Button.Icon className="text-2xl">
             <FcGoogle />
           </Button.Icon>
-          <Button.Text>Continue with google</Button.Text>
+          <Button.Text>
+            {isPending ? "Signing in..." : "Continue with google"}
+          </Button.Text>
         </Button>
       </div>
     </form>

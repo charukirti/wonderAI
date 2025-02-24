@@ -45,7 +45,23 @@ export async function getCurrentUser() {
   return data.user;
 }
 
+// for logout
 export async function logout() {
   const { error } = await supabase.auth.signOut();
   if (error) throw new Error(error.message);
+}
+
+// for google signup
+
+export async function continueWithGoogle() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: `${window.location.origin}/my-trips`,
+    },
+  });
+
+  if (error) throw new Error("There was an error while signing in with google");
+
+  return data;
 }
