@@ -1,6 +1,9 @@
 import { Link, useNavigate } from "react-router";
 import { Tables } from "../../types/supabase";
 import { convertToIndianTime } from "../../utils/convertToIndianTime";
+import useDeleteTrip from "../../hooks/useDeleteTrip";
+import Button from "./Button";
+import { RiDeleteBin6Fill } from "react-icons/ri";
 
 type TripProps = Pick<
   Tables<"trips">,
@@ -26,6 +29,9 @@ export default function TripCard({
   const created = created_at
     ? convertToIndianTime(created_at)
     : "Time not available";
+  if (!id) throw new Error("There is no trip id");
+
+  const { deleteTrip } = useDeleteTrip();
 
   return (
     <div>
@@ -35,9 +41,20 @@ export default function TripCard({
       </h2>
 
       <div
-        className="cursor-pointer rounded-2xl border border-slate-700 bg-slate-800/50 p-4 text-white"
+        className="relative cursor-pointer rounded-2xl border border-slate-700 bg-slate-800/50 p-4 text-white"
         onClick={() => navigate(`/trip-details/${id}`)}
       >
+        <Button
+          className="absolute top-4 right-4"
+          onClick={(e) => {
+            e.stopPropagation();
+            deleteTrip(id);
+          }}
+        >
+          <Button.Icon>
+            <RiDeleteBin6Fill size={25} />
+          </Button.Icon>
+        </Button>
         <div className="space-y-3">
           <p className="text-lg">
             <span className="text-gray-300">Destination: </span>
