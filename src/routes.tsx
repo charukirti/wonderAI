@@ -1,12 +1,13 @@
+import { lazy } from "react";
 import { createBrowserRouter, RouteObject } from "react-router";
-import AppLayout from "./components/Layout/AppLayout";
-import Home from "./pages/Home";
-import CreateTrip from "./pages/CreateTrip";
-import TripDetails from "./pages/TripDetails";
-import MyTrips from "./pages/MyTrips";
-import PageNotFound from "./pages/PageNotFound";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+const AppLayout = lazy(() => import("./components/Layout/AppLayout"));
+const Home = lazy(() => import("./pages/Home"));
+const CreateTrip = lazy(() => import("./pages/CreateTrip"));
+const TripDetails = lazy(() => import("./pages/TripDetails"));
+const MyTrips = lazy(() => import("./pages/MyTrips"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound"));
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
 import ProtectedRoute from "./components/Layout/ProtectedRoute";
 
 const routes: RouteObject[] = [
