@@ -20,10 +20,6 @@ const routes: RouteObject[] = [
     ),
     children: [
       {
-        index: true,
-        element: <Home />,
-      },
-      {
         path: "/create-trip",
         element: <CreateTrip />,
       },
@@ -40,6 +36,10 @@ const routes: RouteObject[] = [
         element: <PageNotFound />,
       },
     ],
+  },
+  {
+    index: true,
+    element: <Home />,
   },
   {
     path: "/auth/login",
