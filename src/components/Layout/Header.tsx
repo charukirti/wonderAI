@@ -5,7 +5,7 @@ import HeaderMenu from "../ui/HeaderMenu";
 
 export default function Header() {
   const navigate = useNavigate();
-  const { isLoading: userLoading, isAuthenticated } = useUser();
+  const {  isAuthenticated } = useUser();
 
   function handleNavigation() {
     navigate("/auth/login");

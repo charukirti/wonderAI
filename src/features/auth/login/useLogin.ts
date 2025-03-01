@@ -16,7 +16,7 @@ export function useLogin() {
       navigate("/create-trip", { replace: true });
       toast.success("User logged in successfully");
     },
-    onError: (err) => {
+    onError: () => {
       toast.error("Provided email or password are incorrect");
     },
   });
